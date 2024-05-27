@@ -19,10 +19,11 @@ namespace DotNetTrainingBatch3.ConsoleApp.RestClientExamples
             //await Edit(1);
             //await Edit(33);
             //await Update(23, "string", "string", "string");
-            await Delete(23);
-            await Delete(22);
-            await Delete(21);
-            await Delete(20);
+            //await Delete(23);
+            //await Delete(17);
+            //await Delete(18);
+            //await Delete(19);
+            await Create("title","author","content");
 
         }
         private async Task Read()
@@ -121,7 +122,7 @@ namespace DotNetTrainingBatch3.ConsoleApp.RestClientExamples
         private async Task Delete(int id)
         {
             string url = $"{_apiUrl}/{id}";
-            RestRequest request = new RestRequest(_apiUrl, Method.Get);
+            RestRequest request = new RestRequest(url, Method.Delete);
             RestClient restClient = new RestClient();
             RestResponse response = await restClient.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)

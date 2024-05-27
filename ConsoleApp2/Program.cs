@@ -5,6 +5,7 @@ using DotNetTrainingBatch3.ConsoleApp.DapperExamples;
 using DotNetTrainingBatch3.ConsoleApp.EFCoreExamples;
 using DotNetTrainingBatch3.ConsoleApp.HttpClientExamples;
 using DotNetTrainingBatch3.ConsoleApp.Models;
+using DotNetTrainingBatch3.ConsoleApp.RefitExamples;
 using DotNetTrainingBatch3.ConsoleApp.RestClientExamples;
 
 //using DotNetTrainingBatch3.ConsoleApp.RefitExamples;
@@ -115,8 +116,11 @@ Console.ReadKey();
 
 //HttpClientExample httpClientExample = new HttpClientExample();
 //await httpClientExample.Run();
-RestClientExample example = new RestClientExample();
+//RestClientExample example = new RestClientExample();
+//await example.Run();
+RefitExample example = new RefitExample();
 await example.Run();
+
 Console.ReadKey();
 
 //BlogModel blog = new BlogModel();
