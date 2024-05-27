@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.WebApp", "PTKDotNetCore.WebApp\PTKDotNetCore.WebApp.csproj", "{113B4B9F-940B-47EB-81E3-14AB74A82EAC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.ConsoleApp", "ConsoleApp2\PTKDotNetCore.ConsoleApp.csproj", "{0F728341-3088-4DC9-92AE-8D9FEF03027E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BirdWebApi", "PTKDotNetCore.BirdWebApi\PTKDotNetCore.BirdWebApi.csproj", "{54C75974-286C-45A5-89AD-48DDD54655D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.MvcApp", "PTKDotNetCore.MvcApp\PTKDotNetCore.MvcApp.csproj", "{C6159A69-B99F-49C0-AC46-BD45B5157EFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.MvcApp", "PTKDotNetCore.MvcApp\PTKDotNetCore.MvcApp.csproj", "{C6159A69-B99F-49C0-AC46-BD45B5157EFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.ConsoleApp", "PTKDotNetCore.ConsoleApp\PTKDotNetCore.ConsoleApp.csproj", "{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{113B4B9F-940B-47EB-81E3-14AB74A82EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{113B4B9F-940B-47EB-81E3-14AB74A82EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{113B4B9F-940B-47EB-81E3-14AB74A82EAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F728341-3088-4DC9-92AE-8D9FEF03027E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F728341-3088-4DC9-92AE-8D9FEF03027E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F728341-3088-4DC9-92AE-8D9FEF03027E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F728341-3088-4DC9-92AE-8D9FEF03027E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54C75974-286C-45A5-89AD-48DDD54655D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54C75974-286C-45A5-89AD-48DDD54655D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54C75974-286C-45A5-89AD-48DDD54655D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{C6159A69-B99F-49C0-AC46-BD45B5157EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6159A69-B99F-49C0-AC46-BD45B5157EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6159A69-B99F-49C0-AC46-BD45B5157EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
