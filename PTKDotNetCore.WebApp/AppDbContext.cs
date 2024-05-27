@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using PTKDotNetCore.WebApp.Model;
+using PTKDotNetCore.WebApp.Models;
 
 namespace PTKDotNetCore.WebApp;
 
