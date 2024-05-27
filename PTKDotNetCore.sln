@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.MvcApp", "PTK
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.ConsoleApp", "PTKDotNetCore.ConsoleApp\PTKDotNetCore.ConsoleApp.csproj", "{74080E24-A7A8-4FF7-9E38-FD88F28C0B3B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{442382B0-86C4-4752-BF17-66A8A6450EFC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
