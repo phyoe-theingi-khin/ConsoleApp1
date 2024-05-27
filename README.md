@@ -1,5 +1,5 @@
 # PTKDotNetCore
-
+## Hello friends 🤟, I am Phyoe Theingi Khin! ⚡
 - Console App
 - Ado.Net
 - Dapper
