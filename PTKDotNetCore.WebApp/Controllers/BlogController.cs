@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata;
-using PTKDotNetCore.WebApp.Model;
+using PTKDotNetCore.WebApp.Models;
 
 namespace PTKDotNetCore.WebApp.Controllers;
 

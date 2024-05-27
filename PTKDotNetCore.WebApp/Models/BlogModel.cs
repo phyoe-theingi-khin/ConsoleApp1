@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PTKDotNetCore.WebApp.Model;
+namespace PTKDotNetCore.WebApp.Models;
 
 [Table("Tbl_Blog")]
 public class BlogModel
