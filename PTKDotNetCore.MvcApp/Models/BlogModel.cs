@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PTKDotNetCore.ConsoleApp.Models;
+namespace PTKDotNetCore.MvcApp.Models;
 
 [Table("Tbl_Blog")]
 public class BlogModel
@@ -13,11 +13,8 @@ public class BlogModel
     public string BlogAuthor { get; set; }
     public string BlogContent { get; set; }
 }
-
-public class JsonPlaceholderModel
+public class BlogMessageResponseModel
 {
-    public int userId { get; set; }
-    public int id { get; set; }
-    public string title { get; set; }
-    public string body { get; set; }
+    public bool IsSuccess { get; set; }
+    public string Message { get; set; }
 }

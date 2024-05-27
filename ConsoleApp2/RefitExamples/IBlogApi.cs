@@ -1,29 +1,22 @@
-﻿using DotNetTrainingBatch3.ConsoleApp.Models;
+﻿using PTKDotNetCore.ConsoleApp.Models;
 using Refit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DotNetTrainingBatch3.ConsoleApp.RefitExamples
+namespace PTKDotNetCore.ConsoleApp.RefitExamples;
+
+internal interface IBlogApi
 {
-    internal interface IBlogApi
-    {
-        [Get("/api/blog")]
-        Task<List<BlogModel>> GetBlog();
+    [Get("/api/blog")]
+    Task<List<BlogModel>> GetBlog();
 
-        [Get("/api/blog/{id}")]
-        Task<BlogModel> GetBlog(int id);
+    [Get("/api/blog/{id}")]
+    Task<BlogModel> GetBlog(int id);
 
-        [Post("/api/blog")]
-        Task<string> CreateBlog(BlogModel blog);
+    [Post("/api/blog")]
+    Task<string> CreateBlog(BlogModel blog);
 
-        [Put("/api/blog/{id}")]
-        Task<string> UpdateBlog (int id,BlogModel blog);
+    [Put("/api/blog/{id}")]
+    Task<string> UpdateBlog (int id,BlogModel blog);
 
-        [Delete("/api/blog/{id}")]
-        Task<string> Deleteblog(int id);
-    }  
-
+    [Delete("/api/blog/{id}")]
+    Task<string> Deleteblog(int id);
 }

@@ -1,111 +1,100 @@
-﻿using DotNetTrainingBatch3.ConsoleApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System.Numerics;
+﻿using PTKDotNetCore.ConsoleApp.Models;
 
+namespace PTKDotNetCore.ConsoleApp.EFCoreExamples;
 
-
-
-namespace DotNetTrainingBatch3.ConsoleApp.EFCoreExamples
+public class EFCoreExample
 {
-    public class EFCoreExample
+    public void Read()
     {
-        public void Read()
-        {
-            AppDbContext db = new AppDbContext();
-            List<BlogModel> lst = db.Blogs.ToList();
+        AppDbContext db = new AppDbContext();
+        List<BlogModel> lst = db.Blogs.ToList();
 
-            foreach (BlogModel item in lst)
-            {
-                Console.WriteLine(item.BlogId);
-                Console.WriteLine(item.BlogTitle);
-                Console.WriteLine(item.BlogAuthor);
-                Console.WriteLine(item.BlogContent);
-            }
-        }
-
-        public void Edit(int id)
+        foreach (BlogModel item in lst)
         {
-            AppDbContext db = new AppDbContext();
-            BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
-            if (item is null)
-            {
-                Console.WriteLine("No data found.");
-                return;
-            }
             Console.WriteLine(item.BlogId);
             Console.WriteLine(item.BlogTitle);
             Console.WriteLine(item.BlogAuthor);
             Console.WriteLine(item.BlogContent);
         }
+    }
 
-        public void Create(string title, string author, string content)
+    public void Edit(int id)
+    {
+        AppDbContext db = new AppDbContext();
+        BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
+        if (item is null)
         {
-            BlogModel blog = new BlogModel()
-            {
-                BlogTitle = title,
-                BlogAuthor = author,
-                BlogContent = content
-            };
+            Console.WriteLine("No data found.");
+            return;
+        }
+        Console.WriteLine(item.BlogId);
+        Console.WriteLine(item.BlogTitle);
+        Console.WriteLine(item.BlogAuthor);
+        Console.WriteLine(item.BlogContent);
+    }
 
-            AppDbContext db = new AppDbContext();
-            db.Blogs.Add(blog);
-            int result = db.SaveChanges();
+    public void Create(string title, string author, string content)
+    {
+        BlogModel blog = new BlogModel()
+        {
+            BlogTitle = title,
+            BlogAuthor = author,
+            BlogContent = content
+        };
 
-            string message = result > 0 ? "Saving Successful." : "Saving Failed.";
+        AppDbContext db = new AppDbContext();
+        db.Blogs.Add(blog);
+        int result = db.SaveChanges();
 
-            Console.WriteLine(message);
+        string message = result > 0 ? "Saving Successful." : "Saving Failed.";
+
+        Console.WriteLine(message);
+    }
+
+    public void Update(int id, string title, string author, string content)
+    {
+        AppDbContext db = new AppDbContext();
+        BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
+        if (item is null)
+        {
+            Console.WriteLine("No data found.");
+            return;
         }
 
-        public void Update(int id, string title, string author, string content)
+        item.BlogTitle = title;
+        item.BlogAuthor = author;
+        item.BlogContent = content;
+        int result = db.SaveChanges();
+
+        string message = result > 0 ? "Updating Successful." : "Updating Failed.";
+
+        Console.WriteLine(message);
+    }
+
+    public void Delete(int id)
+    {
+        AppDbContext db = new AppDbContext();
+        BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
+        if (item is null)
         {
-            AppDbContext db = new AppDbContext();
-            BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
-            if (item is null)
-            {
-                Console.WriteLine("No data found.");
-                return;
-            }
-
-            item.BlogTitle = title;
-            item.BlogAuthor = author;
-            item.BlogContent = content;
-            int result = db.SaveChanges();
-
-            string message = result > 0 ? "Updating Successful." : "Updating Failed.";
-
-            Console.WriteLine(message);
+            Console.WriteLine("No data found.");
+            return;
         }
 
-        public void Delete(int id)
+        db.Blogs.Remove(item);
+        int result = db.SaveChanges();
+
+        string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
+
+        Console.WriteLine(message);
+    }
+
+    public void Generate(int count)
+    {
+        for (int i = 0; i < count; i++)
         {
-            AppDbContext db = new AppDbContext();
-            BlogModel item = db.Blogs.FirstOrDefault(item => item.BlogId == id);
-            if (item is null)
-            {
-                Console.WriteLine("No data found.");
-                return;
-            }
-
-            db.Blogs.Remove(item);
-            int result = db.SaveChanges();
-
-            string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
-
-            Console.WriteLine(message);
-        }
-
-        public void Generate(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                int rowNo = (i + 1);
-                Create("Title" + rowNo, "Author" + rowNo, "Content" + rowNo);
-            }
+            int rowNo = (i + 1);
+            Create("Title" + rowNo, "Author" + rowNo, "Content" + rowNo);
         }
     }
 }

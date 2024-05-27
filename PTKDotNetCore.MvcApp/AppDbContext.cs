@@ -1,8 +1,8 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using PTKDotNetCore.ConsoleApp.Models;
+using PTKDotNetCore.MvcApp.Models;
 
-namespace PTKDotNetCore.ConsoleApp.EFCoreExamples;
+namespace PTKDotNetCore.MvcApp;
 
 public class AppDbContext : DbContext
 {
@@ -10,7 +10,6 @@ public class AppDbContext : DbContext
     {
         SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
-
             DataSource = "DESKTOP-4FNB1J3\\MSSQLSERVER1",
             InitialCatalog = "TestDb",
             UserID = "sa",

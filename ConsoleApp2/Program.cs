@@ -1,16 +1,10 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using DotNetTrainingBatch3.ConsoleApp.AdoDotNetExamples;
-using DotNetTrainingBatch3.ConsoleApp.DapperExamples;
-using DotNetTrainingBatch3.ConsoleApp.EFCoreExamples;
-using DotNetTrainingBatch3.ConsoleApp.HttpClientExamples;
-using DotNetTrainingBatch3.ConsoleApp.Models;
-using DotNetTrainingBatch3.ConsoleApp.RefitExamples;
-using DotNetTrainingBatch3.ConsoleApp.RestClientExamples;
 
-//using DotNetTrainingBatch3.ConsoleApp.RefitExamples;
-//using DotNetTrainingBatch3.ConsoleApp.RestClientExamples;
+//using PTKDotNetCore.ConsoleApp.RefitExamples;
+//using PTKDotNetCore.ConsoleApp.RestClientExamples;
 using Newtonsoft.Json;
+using PTKDotNetCore.ConsoleApp.RefitExamples;
 using Serilog;
 
 Console.WriteLine("Hello, World!");
@@ -180,7 +174,7 @@ Console.ReadKey();
 //Log.Logger = new LoggerConfiguration()
 //          .MinimumLevel.Debug()
 //          .WriteTo.Console()
-//          .WriteTo.File("logs/DotNetTrainingBatch3.ConsoleApp.log", rollingInterval: RollingInterval.Hour)
+//          .WriteTo.File("logs/PTKDotNetCore.ConsoleApp.log", rollingInterval: RollingInterval.Hour)
 //          .CreateLogger();
 
 //Log.Information("Hello, world!");
