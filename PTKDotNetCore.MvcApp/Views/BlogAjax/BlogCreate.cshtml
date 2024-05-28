@@ -32,9 +32,30 @@
                 //contentType: "application/json; charset=utf-8",
                 success: function (result) {
                     console.log(result);
+                    if (result.IsSuccess) 
+                    {
+                        Swal.fire({
+                            title: "Success.",
+                            text: result.Message,
+                            icon: "success",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.href = "/BlogAjax";
+                            }
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: "testinh!",
+                            text: result.Message,
+                            icon: "error"
+
+                        });
+
+                    }
                 },
-                error: function () {
-                    alert("Error while inserting data");
+                error: function (errormessage) {
+                    console.log(errormessage.responseText);
                 }
             });
         })

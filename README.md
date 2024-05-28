@@ -1,4 +1,6 @@
-# PTKDotNetCore
+﻿# PTKDotNetCore
+
+<img src="https://github.com/devicons/devicon/blob/master/icons/csharp/csharp-original.svg" alt="csharp logo" width="40" height="40" />
 
 - Console App
 - Ado.Net

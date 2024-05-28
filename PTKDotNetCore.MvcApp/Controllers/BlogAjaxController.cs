@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PTKDotNetCore.MvcApp.Models;
+using System.Reflection.Metadata;
 
 namespace PTKDotNetCore.MvcApp.Controllers;
 
@@ -60,30 +61,58 @@ public class BlogAjaxController : Controller
     [ActionName("Update")]
     public IActionResult BlogUpdate(int id, BlogModel blog)
     {
-        BlogModel? item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogMessageResponseModel model = new BlogMessageResponseModel();
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
         if (item is null)
         {
-            return Redirect("/Blog");
+            //model.IsSuccess = false;
+            //model.Message = "No data found.";
+            model = new BlogMessageResponseModel()
+            {
+                IsSuccess = false,
+                Message = "No data found."
+            };
+            return Json(model);
         }
 
         item.BlogTitle = blog.BlogTitle;
         item.BlogAuthor = blog.BlogAuthor;
         item.BlogContent = blog.BlogContent;
-        _context.SaveChanges();
-        return Redirect("/Blog");
+
+        int result = _context.SaveChanges();
+        string message = result > 0 ? "Updating Successful." : "Updating Failed.";
+        model = new BlogMessageResponseModel()
+        {
+            IsSuccess = result > 0,
+            Message = message
+        };
+        return Json(model);
     }
 
+    [HttpPost]
     [ActionName("Delete")]
-    public IActionResult BlogDelete(int id)
+    public IActionResult BlogDelete(BlogModel blog)
     {
-        BlogModel? item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogMessageResponseModel model = new BlogMessageResponseModel();
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == blog.BlogId);
         if (item is null)
         {
-            return Redirect("/Blog");
+            model = new BlogMessageResponseModel()
+            {
+                IsSuccess = false,
+                Message = "No data found."
+            };
+            return Json(model);
         }
 
         _context.Blogs.Remove(item);
-        _context.SaveChanges();
-        return Redirect("/Blog");
+        int result = _context.SaveChanges();
+        string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
+        model = new BlogMessageResponseModel()
+        {
+            IsSuccess = result > 0,
+            Message = message
+        };
+        return Json(model);
     }
 }
