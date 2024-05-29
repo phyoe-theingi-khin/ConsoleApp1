@@ -1,0 +1,39 @@
+﻿@model ApexChartRadarResponseModel
+@{
+    List<string> _month = Model.Month;
+    List<int> _series = Model.Series;
+
+}
+<div id="chart"></div>
+@section scripts{
+
+    <script>
+        let _series = @Html.Raw(JsonConvert.SerializeObject(_series));
+        let _month = @Html.Raw(JsonConvert.SerializeObject(_month));
+
+        var options = {
+            series: [{
+                name: 'Series 1',
+                data: _series,
+            }],
+            chart: {
+                height: 350,
+                type: 'radar',
+            },
+            title: {
+                text: 'Basic Radar Chart'
+            },
+            xaxis: {
+                categories:_month
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+
+}
+
+
