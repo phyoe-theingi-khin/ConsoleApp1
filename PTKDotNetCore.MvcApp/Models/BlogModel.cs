@@ -42,3 +42,33 @@ public class ApexChartRadarResponseModel
     public List<int> Series { get; set; }   
     public List<string> Month { get; set; } 
 }
+[Table("Tbl_BarChart")]
+public class BarChartModel
+{
+    [Key]
+    public int Id { get; set;}  
+    public string Color { get; set;}  
+    public int Votes { get; set;}
+
+}
+public class ChartJsBarChartResponseModel
+{
+    public List<int> Votes { get; set;}  
+    public List<string> Color { get; set;}  
+}
+[Table("Tbl_DonutChart")]
+public class DonutChartHomeworkModel
+{
+    [Key]
+    public int Id { get; set; }
+    public string Browsers { get; set; }
+    public string Versions { get; set; }
+    public float Usages { get; set; }
+}
+public class DonutChartHomeworkResponseModel
+{
+    public List<string> Browsers { get; set; }
+    public List<string> Versions { get; set; }
+    public List<float> Usages { get; set; }
+
+}
