@@ -20,8 +20,6 @@ namespace PTKDotNetCore.MvcApp.Controllers
             model.Versions = lst.Select(x => x.Versions).ToList();
             model.Usages = lst.Select(x => x.Usages).ToList();
             return View(model);
-
-
         }
     }
 }
