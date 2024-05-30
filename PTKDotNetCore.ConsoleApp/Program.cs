@@ -111,17 +111,17 @@ Console.WriteLine("Hello, World!");
 //efCoreExample.Update(3002, "test title 2", "test author 2", "test content 2");
 //efCoreExample.Delete(3002);
 
-Console.WriteLine("Waiting for api...");
-Console.ReadKey();
+//Console.WriteLine("Waiting for api...");
+//Console.ReadKey();
 
 //HttpClientExample httpClientExample = new HttpClientExample();
 //await httpClientExample.Run();
 //RestClientExample example = new RestClientExample();
 //await example.Run();
-RefitExample example = new RefitExample();
-await example.Run();
+//RefitExample example = new RefitExample();
+//await example.Run();
 
-Console.ReadKey();
+
 
 //BlogModel blog = new BlogModel();
 //blog.BlogTitle = "Test";
@@ -199,4 +199,17 @@ Console.ReadKey();
 //{
 //    await Log.CloseAndFlushAsync();
 //}
+//EFCoreExample EfcoreExample = new EFCoreExample();
+//EfcoreExample.Generate(400);
+int pageSize = 10;
+AppDbContext db = new AppDbContext();
+int rowCount = db.Blogs.Count();
+int pageCount = rowCount / pageSize;
+Console.WriteLine($"Current Page size:{pageCount}");
+if (rowCount % pageSize > 0)
+{
+	pageCount++;
+	Console.WriteLine($"Current Page size:{pageCount}");
+}
+Console.ReadKey();
 

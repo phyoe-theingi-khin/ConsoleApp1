@@ -8,3 +8,5 @@
 - EFCore
 - ASP.NET Core Web API
 - ASP.NET Core Web MVC
+- truncate table Tbl_Blog //to restart the table data from 1
+- to write c# code in javascript use @

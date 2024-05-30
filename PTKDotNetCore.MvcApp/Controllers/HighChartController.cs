@@ -16,7 +16,7 @@ namespace PTKDotNetCore.MvcApp.Controllers
             AppDbContext content = new AppDbContext();
             var lst = content.DonutChartHomework.ToList();
             DonutChartHomeworkResponseModel model = new DonutChartHomeworkResponseModel();
-            model.Browsers = lst.Select(x => x.Browsers).ToList();
+            model.Browsers = lst.Select(x => x.Browsers).Distinct().ToList();
             model.Versions = lst.Select(x => x.Versions).ToList();
             model.Usages = lst.Select(x => x.Usages).ToList();
             return View(model);
