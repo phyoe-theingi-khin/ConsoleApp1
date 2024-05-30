@@ -6,7 +6,7 @@ namespace PTKDotNetCore.MvcApp.Controllers
 	public class BlogPaginationController : Controller
 	{
 		[ActionName("Index")]
-		public IActionResult BlogIndex(int pageNo, int pageSize)
+		public IActionResult BlogIndex(int pageNo=1, int pageSize=10)
 		{
 		
 			AppDbContext db = new AppDbContext();
@@ -20,7 +20,7 @@ namespace PTKDotNetCore.MvcApp.Controllers
 			}
 
 			List<BlogModel> lst = db.Blogs
-				.OrderByDescending(x => x.BlogId)
+				//.OrderByDescending(x => x.BlogId)
 				.Skip((pageNo - 1) * pageSize)
 				.Take(pageSize)
 				.ToList();
@@ -30,10 +30,8 @@ namespace PTKDotNetCore.MvcApp.Controllers
 			model.pageSize = pageSize;
 			model.pageNo = pageNo;
 			model.pageCount = pageCount;
-			//model.isEndOfPage = pageNo == pageCount;
-			return Ok(model);
-
-			return View(BlogIndex);
+            //model.isEndOfPage = pageNo == pageCount;
+            return View("BlogIndex", model);
 		}
 	}
 }

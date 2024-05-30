@@ -6,7 +6,7 @@
     int pageSize = Model.pageSize;
     string GetUrl(int pageNo)
     {
-        return $"/BlogPagination/Index?ageNo={pageCount}&pageSize={pageSize}";
+        return $"/BlogPagination/Index?pageNo={pageCount}&pageSize={pageSize}";
     }
 }
 <table class="table">
@@ -46,13 +46,13 @@
                 if(pageNo == i)
                 {
                     <li class="page-item active">
-                        <a class="page-link" href="/BlogPagination/Index?ageNo=@i&pageSize=@pageSize">@i</a>
+                        <a class="page-link" href="@GetUrl(i)">@i</a>
                     </li>
                 }
                 else
                 {
                     <li class="page-item">
-                        <a class="page-link" href="/BlogPagination/Index?ageNo=@i&pageSize=@pageSize">@i</a>
+                        <a class="page-link" href="@GetUrl(i)">@i</a>
                     </li>
                 }
             }
