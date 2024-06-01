@@ -199,17 +199,17 @@ Console.WriteLine("Hello, World!");
 //{
 //    await Log.CloseAndFlushAsync();
 //}
-//EFCoreExample EfcoreExample = new EFCoreExample();
-//EfcoreExample.Generate(400);
-int pageSize = 10;
-AppDbContext db = new AppDbContext();
-int rowCount = db.Blogs.Count();
-int pageCount = rowCount / pageSize;
-Console.WriteLine($"Current Page size:{pageCount}");
-if (rowCount % pageSize > 0)
-{
-	pageCount++;
-	Console.WriteLine($"Current Page size:{pageCount}");
-}
+EFCoreExample EfcoreExample = new EFCoreExample();
+EfcoreExample.Generate(400);
+//int pageSize = 10;
+//AppDbContext db = new AppDbContext();
+//int rowCount = db.Blogs.Count();
+//int pageCount = rowCount / pageSize;
+//Console.WriteLine($"Current Page size:{pageCount}");
+//if (rowCount % pageSize > 0)
+//{
+//	pageCount++;
+//	Console.WriteLine($"Current Page size:{pageCount}");
+//}
 Console.ReadKey();
 

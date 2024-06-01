@@ -5,6 +5,12 @@ namespace PTKDotNetCore.MvcApp.Controllers
 {
     public class ApexChartController : Controller
     {
+        private readonly AppDbContext _db;
+        public ApexChartController(AppDbContext db)
+        {
+            _db = db;
+        }
+
         public IActionResult PieChart()
         {
             ApexChartPieChartResponseModel model = new ApexChartPieChartResponseModel()
@@ -17,8 +23,8 @@ namespace PTKDotNetCore.MvcApp.Controllers
         }
         public IActionResult DashedLineChart()
         {
-            AppDbContext content = new AppDbContext();
-            var lst=content.PageStatistics.ToList();
+            
+            var lst=_db.PageStatistics.ToList();
             ApexChartDashedLineResponseModel model = new ApexChartDashedLineResponseModel();
             List<ApexChartDashedLineModel>lstSeries = new List<ApexChartDashedLineModel>();
 
@@ -36,8 +42,8 @@ namespace PTKDotNetCore.MvcApp.Controllers
         }
         public IActionResult RadarChart()
         {
-            AppDbContext content = new AppDbContext();
-            var lst=content.Radars.ToList();
+           
+            var lst=_db.Radars.ToList();
             ApexChartRadarResponseModel model=new ApexChartRadarResponseModel();
             model.Series=lst.Select(x => x.Series).ToList();
             model.Month=lst.Select(x => x.Month).ToList();

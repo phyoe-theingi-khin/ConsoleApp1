@@ -5,12 +5,17 @@ namespace PTKDotNetCore.MvcApp.Controllers
 {
 	public class BlogPaginationController : Controller
 	{
+		private readonly AppDbContext _db;
+		public BlogPaginationController(AppDbContext db)
+		{
+			_db = db;
+		}
 		[ActionName("Index")]
 		public IActionResult BlogIndex(int pageNo=1, int pageSize=10)
 		{
 		
-			AppDbContext db = new AppDbContext();
-			int rowCount = db.Blogs.Count();
+			
+			int rowCount = _db.Blogs.Count();
 			int pageCount = rowCount / pageSize;
 			if (rowCount % pageSize > 0)
 				pageCount++;
@@ -19,7 +24,7 @@ namespace PTKDotNetCore.MvcApp.Controllers
 				return View();
 			}
 
-			List<BlogModel> lst = db.Blogs
+			List<BlogModel> lst = _db.Blogs
 				//.OrderByDescending(x => x.BlogId)
 				.Skip((pageNo - 1) * pageSize)
 				.Take(pageSize)

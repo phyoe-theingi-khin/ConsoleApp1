@@ -7,24 +7,24 @@ namespace PTKDotNetCore.MvcApp.Controllers;
 //https://localhost:7047/Blog/Index
 public class BlogAjaxController : Controller
 {
-    private readonly AppDbContext _context;
-
-    public BlogAjaxController()
+    private readonly AppDbContext _db;
+    public BlogAjaxController(AppDbContext context)
     {
-        _context = new AppDbContext();
+        _db = context;
     }
+
 
     [ActionName("Index")]
     public IActionResult BlogIndex()
     {
-        List<BlogModel> lst = _context.Blogs.ToList();
+        List<BlogModel> lst = _db.Blogs.ToList();
         return View("BlogIndex", lst);
     }
 
     [ActionName("Edit")]
     public IActionResult BlogEdit(int id)
     {
-        BlogModel? item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogModel? item = _db.Blogs.FirstOrDefault(x => x.BlogId == id);
         if (item is null)
         {
             return Redirect("/Blog");
@@ -45,8 +45,8 @@ public class BlogAjaxController : Controller
     [ActionName("Save")]
     public IActionResult BlogSave(BlogModel blog)
     {
-        _context.Blogs.Add(blog);
-        int result = _context.SaveChanges();
+        _db.Blogs.Add(blog);
+        int result = _db.SaveChanges();
         string message = result > 0 ? "Saving Successful." : "Saving Failed.";
         BlogMessageResponseModel model = new BlogMessageResponseModel()
         {
@@ -62,7 +62,7 @@ public class BlogAjaxController : Controller
     public IActionResult BlogUpdate(int id, BlogModel blog)
     {
         BlogMessageResponseModel model = new BlogMessageResponseModel();
-        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        var item = _db.Blogs.FirstOrDefault(x => x.BlogId == id);
         if (item is null)
         {
             //model.IsSuccess = false;
@@ -79,7 +79,7 @@ public class BlogAjaxController : Controller
         item.BlogAuthor = blog.BlogAuthor;
         item.BlogContent = blog.BlogContent;
 
-        int result = _context.SaveChanges();
+        int result = _db.SaveChanges();
         string message = result > 0 ? "Updating Successful." : "Updating Failed.";
         model = new BlogMessageResponseModel()
         {
@@ -94,7 +94,7 @@ public class BlogAjaxController : Controller
     public IActionResult BlogDelete(BlogModel blog)
     {
         BlogMessageResponseModel model = new BlogMessageResponseModel();
-        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == blog.BlogId);
+        var item = _db.Blogs.FirstOrDefault(x => x.BlogId == blog.BlogId);
         if (item is null)
         {
             model = new BlogMessageResponseModel()
@@ -105,8 +105,8 @@ public class BlogAjaxController : Controller
             return Json(model);
         }
 
-        _context.Blogs.Remove(item);
-        int result = _context.SaveChanges();
+        _db.Blogs.Remove(item);
+        int result = _db.SaveChanges();
         string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
         model = new BlogMessageResponseModel()
         {

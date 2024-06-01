@@ -6,22 +6,22 @@ namespace PTKDotNetCore.MvcApp.Controllers;
 //https://localhost:7047/Blog/Index
 public class BlogController : Controller
 {
-    private readonly AppDbContext _context;
-    public BlogController()
+    private readonly AppDbContext _db;
+    public BlogController(AppDbContext db)
     {
-        _context = new AppDbContext();
+        _db = db;
     }
     [ActionName("Index")]
-    
+    [HttpGet]
     public IActionResult BlogIndex()
     {
-        List<BlogModel> lst = _context.Blogs.ToList();
+        List<BlogModel> lst = _db.Blogs.ToList();
         return View("BlogIndex",lst);
     }
     [ActionName ("Edit")]
     public IActionResult BlogEdit(int id)
     {
-        BlogModel? item= _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogModel? item= _db.Blogs.FirstOrDefault(x => x.BlogId == id);
         if(item is null) 
         {
             return Redirect("/Blog");
@@ -39,15 +39,15 @@ public class BlogController : Controller
     [ActionName ("Save")]
     public IActionResult BlogSave(BlogModel blog)
     {
-        _context.Blogs.Add(blog);
-        _context.SaveChanges();
+        _db.Blogs.Add(blog);
+        _db.SaveChanges();
         return Redirect("/Blog");
     }
     [HttpPost]
     [ActionName("Update")]
     public IActionResult BlogUpdate(int id,BlogModel blog)
     {
-        BlogModel? item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogModel? item = _db.Blogs.FirstOrDefault(x => x.BlogId == id);
         if (item is null)
         {
             return Redirect("/Blog");
@@ -55,19 +55,19 @@ public class BlogController : Controller
         item.BlogTitle = blog.BlogTitle;
         item.BlogAuthor= blog.BlogAuthor;   
         item.BlogContent= blog.BlogContent;
-        _context.SaveChanges();
+        _db.SaveChanges();
         return Redirect("/Blog");
     }
     [ActionName("Delete")]
     public IActionResult BlogDelete(int id)
     {
-        BlogModel? item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        BlogModel? item = _db.Blogs.FirstOrDefault(x => x.BlogId == id);
         if (item is null)
         {
             return Redirect("/Blog");
         }
-        _context.Blogs.Remove(item);
-        _context.SaveChanges();
+        _db.Blogs.Remove(item);
+        _db.SaveChanges();
         return Redirect("/Blog");
     }
 }
