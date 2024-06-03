@@ -18,6 +18,7 @@ public class BlogController : Controller
         List<BlogModel> lst = _db.Blogs.ToList();
         return View("BlogIndex",lst);
     }
+
     [ActionName ("Edit")]
     public IActionResult BlogEdit(int id)
     {
@@ -28,6 +29,7 @@ public class BlogController : Controller
         }
         return View("BlogEdit",item);
     }
+
     [ActionName ("Create")]
     //string title,string author,string content
     public IActionResult BlogCreate()
@@ -35,6 +37,7 @@ public class BlogController : Controller
         return View("BlogCreate");
 
     }
+
     [HttpPost]
     [ActionName ("Save")]
     public IActionResult BlogSave(BlogModel blog)
@@ -43,6 +46,7 @@ public class BlogController : Controller
         _db.SaveChanges();
         return Redirect("/Blog");
     }
+
     [HttpPost]
     [ActionName("Update")]
     public IActionResult BlogUpdate(int id,BlogModel blog)
@@ -58,6 +62,7 @@ public class BlogController : Controller
         _db.SaveChanges();
         return Redirect("/Blog");
     }
+
     [ActionName("Delete")]
     public IActionResult BlogDelete(int id)
     {
