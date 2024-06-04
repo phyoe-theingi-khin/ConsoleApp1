@@ -67,9 +67,10 @@ public class BlogController : Controller
     [ActionName("Update")]
     public async Task<IActionResult> BlogUpdate(int id, BlogModel blog)
     {
-        RestRequest restRequest = new RestRequest($"api/blog{id}", Method.Put);
-        var response = await _restClient.PutAsync(restRequest);
+        RestRequest restRequest = new RestRequest($"api/blog/{id}", Method.Put);
         restRequest.AddJsonBody(blog);
+        var response = await _restClient.PutAsync(restRequest);
+      
         return Redirect("/Blog");
 
     }
@@ -77,8 +78,8 @@ public class BlogController : Controller
     [ActionName("Delete")]
     public async Task<IActionResult> BlogDelete(int id)
     {
-        RestRequest restRequest = new RestRequest($"api/blog{id}", Method.Delete);
-        await _restClient.ExecuteAsync(restRequest);
+        RestRequest restRequest = new RestRequest($"api/blog/{id}", Method.Delete);
+        await _restClient.DeleteAsync(restRequest);
         return Redirect("/Blog");
     }
 }
