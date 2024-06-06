@@ -1,6 +1,7 @@
 ﻿using PTKDotNetCore.PractiseExamples.DapperExample;
 using PTKDotNetCore.PractiseExamples.EFCoreExample;
 using PTKDotNetCore.PractiseExamples.PrictiseHttpExamples;
+using PTKDotNetCore.PractiseExamples.RestClientExample;
 
 Console.WriteLine("Hello, World!");
 //DapperExample dapperExample = new DapperExample();
@@ -16,7 +17,8 @@ Console.WriteLine("Hello, World!");
 //eFCoreExample.Edit(1);
 //eFCoreExample.Edit(17);
 //eFCoreExample.Create("ProductNew11", "CategoryNew11", 100);
-//PrictiseHttpClientExample httpClientExample = new PrictiseHttpClientExample();
-//await httpClientExample.Run();
-
+PrictiseHttpClientExample httpClientExample = new PrictiseHttpClientExample();
+await httpClientExample.Run();
+//RestClientExample restClientExample = new RestClientExample();
+//await restClientExample.Run();
 Console.ReadKey();

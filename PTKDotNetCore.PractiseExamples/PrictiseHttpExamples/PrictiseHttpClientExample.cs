@@ -18,9 +18,9 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
 
         public async Task Run()
         {
-            //await ReadAsync();
-            await EditAsync(1);
-            await EditAsync(20);
+            await ReadAsync();
+            //await EditAsync(4);
+            //await EditAsync(20);
         }
         private async Task ReadAsync()
         {
@@ -29,7 +29,8 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
             //HttpResponseMessage response = await _client.GetAsync("https://localhost:7031/api/Product");
             try
             {
-                HttpResponseMessage response = await _client.GetAsync("http://localhost:5272/api/Product");
+                HttpResponseMessage response = await _client.GetAsync("https://localhost:7031/api/Product");
+                //HttpResponseMessage response = await _client.GetAsync("http://localhost:5272/api/Product");
                 if (response.IsSuccessStatusCode)
                 {
                     string jsonStr = await response.Content.ReadAsStringAsync();
@@ -47,11 +48,11 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
             {
                 Console.WriteLine("Request timed out. Please try again later.");
             }
-            
+
         }
         private async Task EditAsync(int id)
         {
-            HttpResponseMessage response = await _client.GetAsync($"https://localhost:7031/api/Product{id}");
+            HttpResponseMessage response = await _client.GetAsync($"https://localhost:7031/api/Product/{id}");
             if (response.IsSuccessStatusCode)
             {
                 string jsonStr = await response.Content.ReadAsStringAsync();
@@ -61,8 +62,12 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
                 Console.WriteLine(item.ProductPrice);
                 Console.WriteLine(item.ProductCategory);
             }
-            var errorResponse = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(errorResponse);
+            else
+            {
+                var errorResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(errorResponse);
+            }
+
 
         }
         private async Task CreateAsync(string name, string category, int price)
@@ -83,7 +88,11 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
                 string message = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(message);
             }
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            else
+            {
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+            }
+            
         }
 
         private async void UpdateAsync(int id, string name, string category, int price)
@@ -97,25 +106,33 @@ namespace PTKDotNetCore.PractiseExamples.PrictiseHttpExamples
             string jsonStr = JsonConvert.SerializeObject(model);
             HttpContent content = new StringContent(jsonStr, Encoding.UTF8, Application.Json);
 
-            string url = $"https://localhost:7031/api/Product{id}";
+            string url = $"https://localhost:7031/api/Product/{id}";
 
             HttpResponseMessage response = await _client.PutAsync(url, content);
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine(await response.Content.ReadAsStringAsync());
             }
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            else
+            {
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+            }
+           
 
         }
         private async Task DeleteAsync(int id)
         {
-            string url = $"https://localhost:7031/api/Product{id}";
+            string url = $"https://localhost:7031/api/Product/{id}";
             HttpResponseMessage response = await _client.DeleteAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine(await response.Content.ReadAsStringAsync());
             }
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            else
+            {
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+            }
+            
         }
 
     }
