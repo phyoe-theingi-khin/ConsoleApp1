@@ -33,7 +33,7 @@ namespace DotNetTrainingBatch3.ConsoleApp.HttpClientExamples
             if (respone.IsSuccessStatusCode)
             {
                 string jsonstr = await respone.Content.ReadAsStringAsync();
-                List<BlogModel> lst = JsonConvert.DeserializeObject<List<BlogModel>>(jsonstr);
+                List<BlogModel> lst = JsonConvert.DeserializeObject<List<BlogModel>>(jsonstr)!;
                 foreach (BlogModel item in lst)
                 {
                     Console.WriteLine(item.BlogId);
@@ -57,7 +57,7 @@ namespace DotNetTrainingBatch3.ConsoleApp.HttpClientExamples
             if (respone.IsSuccessStatusCode)
             {
                 string jsonstr = await respone.Content.ReadAsStringAsync();
-                BlogModel item = JsonConvert.DeserializeObject<BlogModel>(jsonstr);
+                BlogModel item = JsonConvert.DeserializeObject<BlogModel>(jsonstr)!;
                 Console.WriteLine(item.BlogId);
                 Console.WriteLine(item.BlogTitle);
                 Console.WriteLine(item.BlogAuthor);
