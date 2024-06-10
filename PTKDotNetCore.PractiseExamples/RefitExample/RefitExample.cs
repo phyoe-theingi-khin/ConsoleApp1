@@ -28,7 +28,7 @@ namespace PTKDotNetCore.PractiseExamples.RefitExample
         }
         private async Task CreateAsync(string name, string category, int price)
         {
-            List<ProductModels> lst = await refitApi.PostProduct();
+            //List<ProductModels> lst = await refitApi.PostProduct();
             
         }
     }

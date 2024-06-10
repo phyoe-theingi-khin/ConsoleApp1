@@ -76,7 +76,8 @@ public class BlogController : ControllerBase
 	[HttpPut("{id}")]
 	public IActionResult UpdateBlogs(int id, BlogModel blog)
 	{
-		BlogModel? item = _db.Blogs.FirstOrDefault(item => item.BlogId == id);
+		//var item = _db.Blogs.FirstOrDefault(item => item.BlogId == id);
+		BlogModel item = _db.Blogs.FirstOrDefault(item => item.BlogId == id)!;
 		if (item is null)
 		{
 			return NotFound("No data found.");
@@ -85,6 +86,7 @@ public class BlogController : ControllerBase
 		item.BlogTitle = blog.BlogTitle;
 		item.BlogAuthor = blog.BlogAuthor;
 		item.BlogContent = blog.BlogContent;
+		//_db.Update(item);
 		int result = _db.SaveChanges();
 
 		string message = result > 0 ? "Updating Successful." : "Updating Failed.";

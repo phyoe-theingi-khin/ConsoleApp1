@@ -7,30 +7,23 @@ using System.Text.Json.Serialization;
 using static System.Net.Mime.MediaTypeNames;
 using System.Net.Http;
 using System.Reflection;
-using RestSharp;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using PTKDotNetCore.MVCApp2;
 
 namespace PTKDotNetCore.MvcApp.Controllers;
 
 public class BlogController : Controller
 {
-    private readonly RestClient _restClient;
-    public BlogController(RestClient RestClient)
+    private readonly IBlogApi _blogApi;
+    public BlogController(IBlogApi blogApi)
     {
-        _restClient = RestClient;
+        _blogApi = blogApi;
     }
+
     [ActionName("Index")]
     public async Task<IActionResult> BlogIndex(int pageNo = 1, int pageSize = 10)
     {
-        BlogResponseModel model = new BlogResponseModel();
-        RestRequest restRequest = new RestRequest($"api/blog/{pageNo}/{pageSize}", Method.Get);
-        var response = await _restClient.ExecuteAsync(restRequest);
-        if (response.IsSuccessStatusCode)
-        {
-            var jsonStr = response.Content;
-            model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr!)!;
-
-        }
+       
+        var model = await _blogApi.GetBlog(pageNo, pageSize);
         return View("BlogIndex", model);
 
     }
@@ -44,22 +37,13 @@ public class BlogController : Controller
     [ActionName("Save")]
     public async Task<IActionResult> BlogSave(BlogModel blog)
     {
-        RestRequest restRequest = new RestRequest($"api/blog", Method.Post);
-        restRequest.AddJsonBody(blog);
-        await _restClient.ExecuteAsync(restRequest);
+        var model = await _blogApi.CreateBlog(blog);
         return Redirect("/Blog");
     }
     [ActionName("Edit")]
     public async Task<IActionResult> BlogEdit(int id)
     {
-        RestRequest restRequest = new RestRequest($"api/blog/{id}", Method.Get);
-        var response = await _restClient.GetAsync(restRequest);
-        if (!response.IsSuccessStatusCode)
-        {
-            return Redirect("/Blog");
-        }
-        var jsonStr = response.Content;
-        BlogModel model = JsonConvert.DeserializeObject<BlogModel>(jsonStr!)!;
+        var model=await _blogApi.GetBlog(id);
         return View("BlogEdit", model);
     }
 
@@ -67,10 +51,7 @@ public class BlogController : Controller
     [ActionName("Update")]
     public async Task<IActionResult> BlogUpdate(int id, BlogModel blog)
     {
-        RestRequest restRequest = new RestRequest($"api/blog/{id}", Method.Put);
-        restRequest.AddJsonBody(blog);
-        var response = await _restClient.PutAsync(restRequest);
-      
+       var model= await _blogApi.UpdateBlog(id, blog);
         return Redirect("/Blog");
 
     }
@@ -78,8 +59,7 @@ public class BlogController : Controller
     [ActionName("Delete")]
     public async Task<IActionResult> BlogDelete(int id)
     {
-        RestRequest restRequest = new RestRequest($"api/blog/{id}", Method.Delete);
-        await _restClient.DeleteAsync(restRequest);
+       var model=await _blogApi.Deleteblog(id);
         return Redirect("/Blog");
     }
 }

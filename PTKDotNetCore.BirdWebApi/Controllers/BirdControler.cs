@@ -54,7 +54,7 @@ public class BirdControler : ControllerBase
         if (response.IsSuccessStatusCode)
         {
             string jsonstr = await response.Content.ReadAsStringAsync();
-            BirdDataModel bird = JsonConvert.DeserializeObject<BirdDataModel>(jsonstr);
+            BirdDataModel bird = JsonConvert.DeserializeObject<BirdDataModel>(jsonstr)!;
             // return Ok(jsonstr);
             //var item = new BirdViewModel
             //{

@@ -15,6 +15,7 @@ using Serilog;
 
 Console.WriteLine("Hello, World!");
 
+
 // F5 => Run
 
 // Ctrl + K, C => Disable
@@ -199,8 +200,8 @@ Console.WriteLine("Hello, World!");
 //{
 //    await Log.CloseAndFlushAsync();
 //}
-EFCoreExample EfcoreExample = new EFCoreExample();
-EfcoreExample.Generate(400);
+//EFCoreExample EfcoreExample = new EFCoreExample();
+//EfcoreExample.Generate(400);
 //int pageSize = 10;
 //AppDbContext db = new AppDbContext();
 //int rowCount = db.Blogs.Count();
@@ -211,5 +212,26 @@ EfcoreExample.Generate(400);
 //	pageCount++;
 //	Console.WriteLine($"Current Page size:{pageCount}");
 //}
+Log.Logger = new LoggerConfiguration()
+           .MinimumLevel.Debug()
+           .WriteTo.Console()
+           .WriteTo.File("logs/PTKDotNetCore.ConsoleApp.log", rollingInterval: RollingInterval.Hour)
+           .CreateLogger();
+Log.Information("Hello, world!");
+
+int a = 10, b = 0;
+try
+{
+    Log.Debug("Dividing {A} by {B}", a, b);
+    Console.WriteLine(a / b);
+}
+catch (Exception ex)
+{
+    Log.Error(ex, "Something went wrong");
+}
+finally
+{
+    await Log.CloseAndFlushAsync();
+}
 Console.ReadKey();
 
