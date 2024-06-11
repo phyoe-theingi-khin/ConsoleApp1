@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata;
 using PTKDotNetCore.WebApp.Models;
+using Newtonsoft.Json;
 
 namespace PTKDotNetCore.WebApp.Controllers;
 
@@ -9,17 +10,21 @@ namespace PTKDotNetCore.WebApp.Controllers;
 [ApiController]
 public class BlogController : ControllerBase
 {
+	private readonly ILogger _logger;
 	private readonly AppDbContext _db;
-	public BlogController()
+	public BlogController(ILogger<BlogController> logger)
 	{
 		_db = new AppDbContext();
-
+		_logger = logger;
 	}
+
 
 	[HttpGet]
 	public IActionResult GetBlogs()
 	{
 		List<BlogModel> lst = _db.Blogs.OrderByDescending(x => x.BlogId).ToList();
+		_logger.LogInformation("Count is " + lst.Count.ToString());
+		_logger.LogInformation(JsonConvert.SerializeObject(lst, Formatting.Indented));
 		return Ok(lst);
 	}
 
