@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.PrictiseTest"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.MinimalWebApi", "PTKDotNetCore.MinimalWebApi\PTKDotNetCore.MinimalWebApi.csproj", "{4DB9DB38-55EB-4121-B66F-6262C44E7329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.ConsoleAppSeriLog", "PTKDotNetCore.ConsoleAppSeriLog\PTKDotNetCore.ConsoleAppSeriLog.csproj", "{DC012765-0DF7-4EAB-A324-F82A6EFB1836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.ConsoleAppSeriLog", "PTKDotNetCore.ConsoleAppSeriLog\PTKDotNetCore.ConsoleAppSeriLog.csproj", "{DC012765-0DF7-4EAB-A324-F82A6EFB1836}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.UI", "PTKDotNetCore.UI\PTKDotNetCore.UI.csproj", "{75E01FE7-DE92-463C-ABEC-57C664C24C6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +88,10 @@ Global
 		{DC012765-0DF7-4EAB-A324-F82A6EFB1836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC012765-0DF7-4EAB-A324-F82A6EFB1836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC012765-0DF7-4EAB-A324-F82A6EFB1836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E01FE7-DE92-463C-ABEC-57C664C24C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E01FE7-DE92-463C-ABEC-57C664C24C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E01FE7-DE92-463C-ABEC-57C664C24C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E01FE7-DE92-463C-ABEC-57C664C24C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
