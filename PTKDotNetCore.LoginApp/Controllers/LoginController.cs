@@ -70,4 +70,13 @@ namespace PTKDotNetCore.LoginApp.Controllers
             return Redirect("/Home");
         }
     }
+    //Tbl_User
+    //UserId ulid
+    //UsserName
+    //Password
+
+    //Tbl_Login
+    //UserId
+    //SessionId
+    //SessionExpired
 }
