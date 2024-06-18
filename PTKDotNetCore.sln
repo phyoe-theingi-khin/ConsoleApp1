@@ -42,15 +42,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.EFCoreAuto", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.LoginApp", "PTKDotNetCore.LoginApp\PTKDotNetCore.LoginApp.csproj", "{E46524B0-DB62-4F46-BAC7-7CFF7A4F8DE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.BlazorServerApp", "PTKDotNetCore.BlazorServerApp\PTKDotNetCore.BlazorServerApp.csproj", "{AED6B432-3E04-4A5A-BE1B-FE44CD98D218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BlazorServerApp", "PTKDotNetCore.BlazorServerApp\PTKDotNetCore.BlazorServerApp.csproj", "{AED6B432-3E04-4A5A-BE1B-FE44CD98D218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.BlazorWasmApp", "PTKDotNetCore.BlazorWasmApp\PTKDotNetCore.BlazorWasmApp.csproj", "{451F8FC2-1A7D-435C-9037-91B7F19CDC25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BlazorWasmApp", "PTKDotNetCore.BlazorWasmApp\PTKDotNetCore.BlazorWasmApp.csproj", "{451F8FC2-1A7D-435C-9037-91B7F19CDC25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.BlazorClientServer.Server", "PTKDotNetCore.BlazorClientServer\Server\PTKDotNetCore.BlazorClientServer.Server.csproj", "{9FFB3917-B101-4185-819B-407DAB1267CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BlazorClientServer.Server", "PTKDotNetCore.BlazorClientServer\Server\PTKDotNetCore.BlazorClientServer.Server.csproj", "{9FFB3917-B101-4185-819B-407DAB1267CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.BlazorClientServer.Client", "PTKDotNetCore.BlazorClientServer\Client\PTKDotNetCore.BlazorClientServer.Client.csproj", "{7320368C-79D9-4003-83C2-4AB655DE10BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BlazorClientServer.Client", "PTKDotNetCore.BlazorClientServer\Client\PTKDotNetCore.BlazorClientServer.Client.csproj", "{7320368C-79D9-4003-83C2-4AB655DE10BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTKDotNetCore.BlazorClientServer.Shared", "PTKDotNetCore.BlazorClientServer\Shared\PTKDotNetCore.BlazorClientServer.Shared.csproj", "{61AC6C25-D819-488A-A3CB-90BB4F20D4A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTKDotNetCore.BlazorClientServer.Shared", "PTKDotNetCore.BlazorClientServer\Shared\PTKDotNetCore.BlazorClientServer.Shared.csproj", "{61AC6C25-D819-488A-A3CB-90BB4F20D4A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

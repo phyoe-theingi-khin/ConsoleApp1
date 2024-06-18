@@ -1,0 +1,29 @@
+﻿<PageTitle>pageBlog</PageTitle>
+
+<span>Count:@blog.Count()</span>
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="Title" @bind-value="requestModel.BlogTitle">
+</div>
+<div class="mb-3">
+    <label class="form-label">Author</label>
+    <input type="text" class="form-control" name="Author" @bind-value="requestModel.BlogAuthor">
+</div>
+<div class="mb-3">
+    <label class="form-label">Content</label>
+    <input type="text" class="form-control" name="Content" @bind-value="requestModel.BlogContent">
+</div>
+<button type="button" class="btn btn-success" @onclick="Save">Save</button>
+<button type="button" class="btn btn-dark" @onclick="Cancel">Cancel</button>
+
+@code {
+    private BlogModel requestModel = new();
+    private List<BlogModel> blog = new List<BlogModel>();
+
+    private void Save()
+    {
+        blog.Add(requestModel);
+    }
+    private void Cancel(){}
+
+}
